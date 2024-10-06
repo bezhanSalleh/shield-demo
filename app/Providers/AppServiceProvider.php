@@ -25,6 +25,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $this->app->bind(
+            abstract: \BezhanSalleh\FilamentShield\Resources\RoleResource::class,
+            concrete: \App\Filament\Resources\ShieldOverrideResource::class
+        );
+
         Model::unguard();
 
         if (app()->environment('production')) {
